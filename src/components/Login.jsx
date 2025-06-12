@@ -1,7 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
+import { URL } from "../utils/constants";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [emailId, setEmailId] = useState("gaurav@gmail.com");
   const [password, setPassword] = useState("Gaurav@1234");
 
@@ -11,7 +18,7 @@ const Login = () => {
     console.log("Form submitted");
     try {
       const res = await axios.post(
-        "http://localhost:3000/login",
+        URL + "/login",
         {
           emailId,
           password,
@@ -20,7 +27,9 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      console.log(res);
+      console.log(res.data);
+      dispatch(addUser(res.data));
+      navigate("/");
     } catch (error) {
       console.error("Login failed:", error.message);
     }
