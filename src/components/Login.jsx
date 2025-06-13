@@ -11,6 +11,7 @@ const Login = () => {
 
   const [emailId, setEmailId] = useState("gaurav@gmail.com");
   const [password, setPassword] = useState("Gaurav@1234");
+  const [error, setError] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +32,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (error) {
+      setError(error.response.data);
       console.error("Login failed:", error.message);
     }
   };
@@ -73,6 +75,7 @@ const Login = () => {
           </div>
 
           <div className="card-actions justify-end mt-4">
+            <p className="text-red-500 ">{error}</p>
             <button type="submit" className="btn btn-secondary">
               Login
             </button>
