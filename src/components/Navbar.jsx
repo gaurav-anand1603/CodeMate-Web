@@ -66,6 +66,9 @@ const Navbar = () => {
               <li>
                 <Link to="/connections">Your Connections</Link>
               </li>
+              <li>
+                <Link to="/requests">Requests</Link>
+              </li>
             </ul>
           </div>
         )}

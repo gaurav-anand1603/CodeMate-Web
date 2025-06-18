@@ -33,7 +33,7 @@ const UserCard = ({ user }) => {
           </div>
           <div className="card-actions mt-4 flex w-full justify-between">
             <button className="btn btn-primary">Interested</button>
-            <button className="btn btn-primary">Rejected</button>
+            <button className="btn btn-primary">Ignored</button>
           </div>
         </div>
       </div>
