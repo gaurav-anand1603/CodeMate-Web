@@ -64,7 +64,7 @@ const Navbar = () => {
                 <Link onClick={handelLogout}>Logout</Link>
               </li>
               <li>
-                <Link to="/connections">connections</Link>
+                <Link to="/connections">Your Connections</Link>
               </li>
             </ul>
           </div>
