@@ -63,6 +63,9 @@ const Navbar = () => {
               <li>
                 <Link onClick={handelLogout}>Logout</Link>
               </li>
+              <li>
+                <Link to="/connections">connections</Link>
+              </li>
             </ul>
           </div>
         )}
