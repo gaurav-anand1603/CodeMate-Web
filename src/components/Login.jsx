@@ -4,13 +4,14 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { URL } from "../utils/constants";
+import { addFeed } from "../utils/feedSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [emailId, setEmailId] = useState("Gaurav@gmail.com");
-  const [password, setPassword] = useState("Gaurav@1234");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState();
 
   const handleSubmit = async (e) => {
@@ -29,6 +30,7 @@ const Login = () => {
         }
       );
       console.log(res.data);
+      dispatch(addFeed(null));
       dispatch(addUser(res.data));
       navigate("/");
     } catch (error) {

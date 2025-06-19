@@ -20,15 +20,24 @@ const Feed = () => {
     getFeed();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(feed);
+  //console.log(feed);
+
+  if (!feed) return null; // or a loading spinner/message
+
   return (
-    feed && (
-      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {feed.map((user, index) => (
-          <UserCard key={user.id} user={feed[index]} />
-        ))}
-      </div>
-    )
+    <div className="p-6">
+      {feed.length === 0 ? (
+        <div className="text-center text-gray-500 text-lg">
+          No more users available.
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {feed.map((user, index) => (
+            <UserCard key={user._id} user={feed[index]} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 
